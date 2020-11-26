@@ -5,7 +5,7 @@ function randomInteger(min, max) {
     return Math.floor(random);
 }
 
-let luckyNumber = randomInteger(1, 101);
+let luckyNumber = randomInteger(1, 100);
 let guess;
 
 /*Comment after Tests*/alert(`Lucky number: ${luckyNumber} (For test purposes)`);

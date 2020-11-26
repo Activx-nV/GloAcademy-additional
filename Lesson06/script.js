@@ -5,32 +5,33 @@ function randomInteger(min, max) {
     return Math.floor(random);
 }
 
-let luckyNumber = randomInteger(1, 100);
-let guess;
 
-/*Comment after Tests*/alert(`Lucky number: ${luckyNumber} (For test purposes)`);
 function guessNumber() {
-    
-    guess = prompt('Угадай число от 1 до 100');
+    let luckyNumber = randomInteger(1, 100);
+    let guess;
+    function gameStart() {
+        guess = prompt('Угадай число от 1 до 100');
 
     if (parseInt(guess) > luckyNumber && typeof parseInt(guess) === 'number') {
         alert('Загаданное число меньше');
-        guessNumber();
+        gameStart();
     } else if (parseInt(guess) < luckyNumber && typeof parseInt(guess) === 'number') {
         alert('Загаданное число больше');
-        guessNumber();
+        gameStart();
     } else if (guess === null) {
         alert('Игра окончена');
     } else if (isNaN(guess)) {
         alert('Введи число!');
-        guessNumber();
+        gameStart();
     }  else if (parseInt(guess) === luckyNumber) {
         alert('Поздравляю, Вы угадали!!!');
        let question = confirm('Хотите сыграть еще раз?');
        if (question) {
-        guessNumber();
         luckyNumber = randomInteger(1, 100);
+        gameStart();
        }
     }
+    }
+    gameStart();
 }
 guessNumber();
